@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body>
-    <a id="_menu" class="menu" href="#_sidebar">☰</a>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-    <main class="content container">
-      {{ content }}
-    </main>
+    {% include nav.html %}
 
-    {% include sidebar.html %}
+    {{ content }}
 
-    <script src="{{ site.baseurl }}/public/js/hydejack.js" async></script>
-  </body>
+    {% include footer.html %}
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
 </html>
