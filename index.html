@@ -1,52 +1,23 @@
 ---
 layout: default
+title: Blog
 ---
 
-<div id="home">
-    <h1>Stack Problems</h1>
-    <hr />
-    <ol class="posts">
-    {% for post in paginator.posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a> &raquo; <i><span>{{ post.date | date_to_string }}</span></i></li>
-    {% endfor %}
-    </ol>
-
-    <!-- Pagination links -->
-    {% if paginator.total_pages > 1 %}
-    <ul class="pagination pagination-sm">
-      {% if paginator.previous_page %}
-        <li>
-          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a>
-        </li>
-      {% else %}
-        <li class="disabled"><span aria-hidden="true">&laquo;</span></li>
-      {% endif %}
-
-      <li><a href="/">First</a></li>
-
-      {% for page in (1..paginator.total_pages) %}
-        {% if page == paginator.page %}
-          <li class="active">
-             <a>{{ page }}<span class="sr-only">(current)</span></a>
-          </li>
-        {% elsif page == 1 %}
-          <li><a href="/">{{ page }}</a></li>
-        {% else %}
-          <li>
-            <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
-
-      <li><a href="/page{{ paginator.total_pages }}/">Last</a></li>
-
-      {% if paginator.next_page %}
-        <li>
-          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a>
-        </li>
-      {% else %}
-        <li class="disabled"><span>&raquo;</span></li>
-      {% endif %}
-    </ul>
-    {% endif %}
-</div><!-- end #home -->
+{% for post in site.posts %}
+  {% assign currentdate = post.date | date: "%Y" %}
+  {% if currentdate != date %}
+    {% unless forloop.first %}</ul><hr/>{% endunless %}
+    <h2 id="y{{post.date | date: "%Y"}}" class="page-title">{{ currentdate }}</h2>
+    <ul class="related-posts">
+    {% assign date = currentdate %}
+  {% endif %}
+  <li>
+    <h4>
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        <span>{{ post.title }}</span>
+        <small>{{ post.date | date: "%m/%d" }}</small>
+      </a>
+    </h4>
+  </li>
+  {% if forloop.last %}</ul><hr/>{% endif %}
+{% endfor %}
