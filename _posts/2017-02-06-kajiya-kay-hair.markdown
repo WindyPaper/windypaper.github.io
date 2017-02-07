@@ -18,8 +18,13 @@ tags:
 下面这个模型是基于04年SIG ATI的论文 UE4实现 (几乎都是参考，没有原创性东西)
 实时里面预计算需要三张贴图：
 
-![](http://windypaper.github.io/img/bg_index.jpg)
+![](http://windypaper.github.io/img/kajiya_kay/diffuse_tex.png)
 1.diffuse的贴图，毛发块纹理
 
+![](http://windypaper.github.io/img/kajiya_kay/jitter_tex.png)
+2.偏移tangent向量的贴图 
+
+![](http://windypaper.github.io/img/kajiya_kay/shifttangent_tex.png)
+3.噪点贴图
 
 ### Power by [windy](http://windypaper.github.io)
