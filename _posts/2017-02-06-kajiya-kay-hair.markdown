@@ -18,7 +18,7 @@ tags:
 下面这个模型是基于04年SIG ATI的论文 UE4实现 (几乎都是参考，没有原创性东西)
 实时里面预计算需要三张贴图：
 
-<img src="img/bg_index.jpg" width="350" />
+![](http://windypaper.github.io/img/bg_index.jpg)
 1.diffuse的贴图，毛发块纹理
 
 
