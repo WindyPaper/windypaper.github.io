@@ -1,0 +1,50 @@
+---
+layout:     keynote
+title:      "UE4 Grass"
+subtitle:   "UE4 grass realtime rendering"
+iframe:     ""
+date:       2017-05-31
+author:     "Windy"
+tags:
+    - shading
+---
+
+在UE4中快速生成植被：
+
+1.在MAX中制作草，先准备一些简单的单独的草的模型，再用MAX的Object Paint的工具，随机刷一些草群出来
+
+2.(主要步骤)接着生成法线，非常取巧的方式，先停用草群的diff贴图，只用alpha的，然后在自身坐标轴上新建5个射灯，在草群的局部坐标系中，Z轴正面的射灯，颜色设置为(128, 255, 255)天蓝色(或许可以采用更好的颜色)，然后灯的类型勾上overshoot，会照亮除射灯的区域，生成一个均匀的正面法线数据。 
+然后再在草的x轴(顶部)，打上红色的射灯(255, 0, 0)，强度(multiplier)为1.0，然后在-x轴，也一样打上红色射灯，但是强度设置为-1； 
+同理，y轴也一样，但是颜色是采用绿色(0, 255, 0)的射灯 
+
+![](http://windypaper.github.io/img/UE4_grass/grass_generate_normal.png)
+生成法线贴图灯的位置摆放
+
+然后用在Z轴正面新建一个摄像机，将数据渲染到纹理，其中一个面的法线数据：
+![](http://windypaper.github.io/img/UE4_grass/grass_normal_map.png)
+生成的法线贴图
+
+以旋转45度为周期，渲染四张法线贴图 
+
+然后将草群材质diff启用，灯光颜色调整为自己想要渲染草群效果的灯光，这时候我们生成游戏里面用的草的切片，和生成法线一样，旋转45度为周期 
+![](http://windypaper.github.io/img/UE4_grass/grass_diff.png)
+生成的草的diffuse贴图
+
+然后将生成的4张草的slice互相穿插，顶端的slice做成漏斗的形式，形成包围圈
+![](http://windypaper.github.io/img/UE4_grass/grass_slices.png)
+草的slices互相穿插
+
+导入UE4之后，将UE4的材质类型设置为： 
+![](http://windypaper.github.io/img/UE4_grass/UE4_mat_type.png)
+UE4的材质类型
+
+设置法线强度： 
+![](http://windypaper.github.io/img/UE4_grass/normal_mat.png)
+
+新建材质instance，调整草的参数，加入opacity，roughness，subsurface的参数调整
+![](http://windypaper.github.io/img/UE4_grass/UE4_grass_inst_mat.png)
+
+最终渲染效果:
+![](http://windypaper.github.io/img/UE4_grass/final_grass.png)
+
+### Power by [windy](http://windypaper.github.io)
