@@ -18,25 +18,25 @@ tags:
 同理，y轴也一样，但是颜色是采用绿色(0, 255, 0)的射灯 
 
 ![](http://windypaper.github.io/img/UE4_grass/grass_generate_normal.png)
-生成法线贴图灯的位置摆放
+<small>生成法线贴图灯的位置摆放</small>
 
 然后用在Z轴正面新建一个摄像机，将数据渲染到纹理，其中一个面的法线数据：
 ![](http://windypaper.github.io/img/UE4_grass/grass_normal_map.png)
-生成的法线贴图
+<small>生成的法线贴图</small>
 
 以旋转45度为周期，渲染四张法线贴图 
 
 然后将草群材质diff启用，灯光颜色调整为自己想要渲染草群效果的灯光，这时候我们生成游戏里面用的草的切片，和生成法线一样，旋转45度为周期 
 ![](http://windypaper.github.io/img/UE4_grass/grass_diff.png)
-生成的草的diffuse贴图
+<small>生成的草的diffuse贴图</small>
 
 然后将生成的4张草的slice互相穿插，顶端的slice做成漏斗的形式，形成包围圈
 ![](http://windypaper.github.io/img/UE4_grass/grass_slices.png)
-草的slices互相穿插
+<small>草的slices互相穿插</small>
 
 导入UE4之后，将UE4的材质类型设置为： 
 ![](http://windypaper.github.io/img/UE4_grass/UE4_mat_type.png)
-UE4的材质类型
+<small>UE4的材质类型</small>
 
 设置法线强度： 
 ![](http://windypaper.github.io/img/UE4_grass/normal_mat.png)
