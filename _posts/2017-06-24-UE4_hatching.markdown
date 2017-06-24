@@ -17,7 +17,7 @@ tags:
 <center><small>准备的连续的纹理图片</small></center>
 
 主要shader代码片段: 
-`
+```
 float3 hatchWeight0 = float3(0.0, 0.0, 0.0); 
 float3 hatchWeight1 = float3(0.0, 0.0, 0.0); 
 // map tone to palette 
@@ -52,7 +52,7 @@ hatching += hatch_tex.z * hatchWeight1.z;
 //multiply over the lighting 
 //reverse the hatching, multiply by intensity, and then reverse back 
 return 1-((1-hatching)*hatching_intensity); 
-`
+```
 因为hatching的图片是灰度图，可以用两张rgb的图保存6张灰度图，分别存入rgb通道里面，然后通过light intensity分level来读取不同hatching的强度值 
 
 ![](http://windypaper.github.io/img/hatching/ue4_hatching.png)
