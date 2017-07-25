@@ -11,9 +11,9 @@ tags:
 
 Foliage Interactive通过两种方式：  
 
-**1.一个是shader代码里面偏移World Position实现，这种方式简单，效率也不错。  
+**1.一个是shader代码里面偏移World Position实现，这种方式简单，效率也不错。**  
 
-**2.通过在植物里面加入骨骼，进行物理的碰撞检测，这种方式会精确很多，但是需要绑定骨骼  
+**2.通过在植物里面加入骨骼，进行物理的碰撞检测，这种方式会精确很多，但是需要绑定骨骼**  
 
 神海4里面是这两张方式都集合了，大型植物采用绑定骨骼的方式，地面的草丛采用简单的偏移World Position的方式。  
 
@@ -81,9 +81,9 @@ if (ret_array.Num() > 0)
 
 基于Mesh的火传播  
 
-**1. 根据物体的bounding box，平均分割变成三维的cell，然后通过cell与mesh的overlap获取有效的cell。  
+**1. 根据物体的bounding box，平均分割变成三维的cell，然后通过cell与mesh的overlap获取有效的cell。**  
 
-**2. 往最近的cell进行传播  
+**2. 往最近的cell进行传播**  
 
 (从这个教程里面看到，如果要精确的话，还可以在cell里面跟mesh做ray cast获取mesh表面精确位置来spawn火焰粒子，火焰传播作者也使用了Djikstra's shortest path algorithm来进行火焰生成路径的选择 https://www.sanathshekar.com/grid-generator)
 
